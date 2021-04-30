@@ -24,16 +24,24 @@ namespace Fibonacci
 
         private void clcbtn_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(tb.Text, out int n);
+            outputlb.Items.Clear();
+            try
+            {
+                Int32.TryParse(tb.Text, out int n);
 
-            n += 1;
+                n += 1;
 
-            int[] ret = fibo(n);
+                int[] ret = fibo(n);
 
                 for (int i = 0; i < ret.Length; i++)
                 {
                     outputlb.Items.Add(ret[i].ToString());
                 }
+            }
+            catch (Exception ex)
+            {
+                outputlb.Items.Add(ex.Message);
+            }
         }
         private int[] fibo(int n)
         {
